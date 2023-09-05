@@ -1,0 +1,29 @@
+{% extends "base_dash.html" %}
+{% block title %} Dashboard {% endblock title %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block body_class %}{% endblock %}
+
+{% block extra_css %}
+
+{% endblock extra_css %}
+
+{% block content %}
+{% block main %}
+{% include "navbar_dashboard.html" %}
+<div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+  
+  {% include "sidebar.html" %}
+
+  <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
+    <main>
+      {% include "dash/settings.html" %}
+    </main>
+    {% include "footer_dashboard.html" %}
+  </div>
+
+</div>
+{% endblock %}
+
+{% endblock %}

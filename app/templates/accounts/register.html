@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %} Sign Up {% endblock title %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block body_class %}{% endblock %}
+
+{% block extra_css %}
+
+{% comment %}
+Delete the line below if you're just getting started and want to remove the welcome screen!
+{% endcomment %}
+{% comment %} <link rel="stylesheet" href="{% static 'css/welcome_page.css' %}"> {% endcomment %}
+
+
+{% endblock extra_css %}
+
+{% block content %}
+
+
+
+<main class="mt-56 transition-all duration-200 ease-soft-in-out">
+
+    <section> <!-- class="min-h-screen mb-32"-->
+      <div class="relative flex items-start pt-6 pb-23 m-1 overflow-hidden bg-center bg-cover min-h-50-screen rounded-xl" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/curved14.jpg')">
+        <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-dark-gray opacity-60"></span>
+        <div class="container z-10">
+          <div class="flex flex-wrap justify-center -mx-3">
+            <div class="w-full max-w-full px-3 mx-auto mt-0 text-center lg:flex-0 shrink-0 lg:w-5/12">
+               <h2 class="mt-12 text-white"> 
+                  
+               </h2> 
+              <h4 class="relative z-10 pt-12 mt-12 font-bold text-transparent bg-gradient-cyan bg-clip-text">
+                Sign Up
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="flex flex-wrap -mx-3 -mt-48 md:-mt-56 lg:-mt-53">
+          <div class="w-full max-w-full px-3 mx-auto mt-0 md:flex-0 shrink-0 md:w-7/12 lg:w-5/12 xl:w-4/12">
+            <div class="relative z-0 flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border dark:bg-slate-700">
+              <div class="flex flex-wrap px-3 -mx-3 sm:px-6 xl:px-12">
+                <div class="relative w-full max-w-full px-3 mt-2 text-center shrink-0">
+                  <p class="z-20 inline px-4 mb-2 font-semibold leading-normal bg-white text-size-sm text-slate-400 dark:text-slate-50 dark:bg-slate-700">
+                    {% if msg %}
+                      <span class="">{{ msg | safe }}</span>
+                    {% else %}
+                      Add your credentials
+                    {% endif %}                       
+                  </p>
+                </div>
+              </div>
+              <div class="flex-auto p-6">
+                
+                {% if success %}
+
+                  <a href="{% url 'login' %}"  
+                     class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle border-0 rounded-lg cursor-pointer  hover:scale-102 hover:shadow-soft-xs leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-dark-blue border-blue-600 bg-blue-700 hover:text-white dark:bg-blue-700">Sign In</a>
+
+                {% else %}
+
+                  <form role="form text-left" method="post" action="" class="">
+                  
+                    {% csrf_token %}
+                    {% comment %} <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700 dark:text-slate-50">Username</label>
+                    <div class="mb-4">
+                      {{ form.username }}
+                    </div>
+                    <span class="text-error">{{ form.username.errors }}</span> {% endcomment %}
+                    <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700 dark:text-slate-50">Email</label>
+                    <div class="mb-4">
+                      {{ form.email }}
+                    </div>
+                    <span class="text-error">{{ form.email.errors }}</span>
+                    <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700 dark:text-slate-50">Password</label>
+                    <div class="mb-4">
+                      {{ form.password1 }}
+                    </div>
+                    <span class="text-error">{{ form.password1.errors }}</span>
+                    <label class="mb-2 ml-1 font-bold text-size-xs text-slate-700 dark:text-slate-50">Confirm Password</label>
+                    <div class="mb-4">
+                      {{ form.password2 }}
+                    </div>
+                    <span class="text-error">{{ form.password2.errors }}</span>
+
+                    <div class="flex items-start mb-6">
+                      <div class="flex items-center h-5">
+                        <input id="terms" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required>
+                      </div>
+                      <label for="terms" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
+                    </div>
+                    
+                    <div class="text-center">
+                      <button type="submit" name="register"  
+                              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign Up</button>
+                    </div>
+                    <p class="mt-4 mb-0 text-center leading-normal text-size-sm dark:text-slate-50">
+                      Have an account? 
+                      <a href="{% url 'login' %}" class="font-bold text-slate-700 dark:text-slate-50">Sign In</a></p>
+                  </form>
+                
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}

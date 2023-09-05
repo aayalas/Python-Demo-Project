@@ -1,0 +1,25 @@
+{% block main %}
+
+{% if page.Params.navigation %} {% include "navbar-main" %} {% endif %}
+
+<main class="bg-gray-50 dark:bg-gray-900">
+  {{ page.content }}
+</main>
+
+{% if page.Params.footer %} {% include "footer-main" %} {% endif %}
+
+{% endblock %}
+{% comment %} {{ define "main" }}
+
+{{ if .Params.navigation }} {{ partial "navbar-main" . }} {{ end }}
+
+<main class="bg-gray-50 dark:bg-gray-900">
+  {{ .Content }}
+</main>
+
+{{ if .Params.footer }} {{ partial "footer-main" . }} {{ end }}
+
+{{ end }} {% endcomment %}
+
+
+
