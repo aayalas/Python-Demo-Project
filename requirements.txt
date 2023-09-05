@@ -27,7 +27,6 @@ django-taggit==3.1.0
 django-tailwind==3.5.0
 django-treebeard==4.6.1
 djangorestframework==3.14.0
-dotenv==0.0.5
 draftjs-exporter==2.1.7
 drf-yasg==1.21.5
 et-xmlfile==1.1.0
