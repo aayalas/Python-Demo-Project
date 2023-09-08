@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']
 # Or * to allow all
 #ALLOWED_HOSTS = ['*']
 
@@ -124,20 +124,12 @@ WSGI_APPLICATION = "app.wsgi.app"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "postgres",
-        'USER': "postgres",
-        'PASSWORD': "%2y2sOn44&%",
-        'HOST': "db.htiwtscowooorbqbqbqq.supabase.co",
-        'PORT': "5432",
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_USER"),
+        'PASSWORD': os.environ.get("DB_PASSWORD"),
+        'HOST': os.environ.get("DB_HOST"),
+        'PORT': os.environ.get("DB_PORT"),
     }
-    # "default": {
-    #      "ENGINE": "django.db.backends.postgresql",
-    #      "NAME": "wagseeddb",
-    #      "USER": "postgres",
-    #      "PASSWORD": "fullstack",
-    #      "HOST": "127.0.0.1",
-    #      "PORT": "5432",
-    # },
 }
 
 
