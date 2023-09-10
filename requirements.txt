@@ -25,7 +25,7 @@ django-no-last-login==0.1.0
 django-permissionedforms==0.1
 django-taggit==3.1.0
 django-tailwind==2.2.2
-django-treebeard==4.6.1
+django-treebeard==4.6.0
 djangorestframework==3.14.0
 dotenv==0.0.5
 draftjs-exporter==2.1.7
